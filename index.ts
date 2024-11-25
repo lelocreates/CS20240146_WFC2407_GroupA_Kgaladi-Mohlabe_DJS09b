@@ -74,7 +74,7 @@ const properties : {
     isAvailable: boolean;
 }[] = [
     {
-        image: './colombia-property.jpg',
+        image: './Images/colombia-property.jpg',
         title: 'Colombian Shack',
         price: 45,
         location: {
@@ -87,7 +87,7 @@ const properties : {
         isAvailable: true  
     },
     {
-        image: './poland-property.jpg',
+        image: './Images/poland-property.jpg',
         title: 'Polish Cottage',
         price: 30,
         location: {
@@ -100,7 +100,7 @@ const properties : {
         isAvailable: false 
     },
     {
-        image: './london-property.jpg',
+        image: './Images/london-property.jpg',
         title: 'London Flat',
         price: 25,
         location: {
@@ -113,7 +113,7 @@ const properties : {
         isAvailable: true
     },
     {
-        image: './images/malaysian-hotel.jpeg',
+        image: './Images/malaysian-hotel.jpeg',
         title: 'Malia Hotel',
         price: 35,
         location: {
@@ -179,7 +179,7 @@ footer.innerHTML = currentLocation[0] + " " + currentLocation[1] + " " + current
 
 // Create a new MainProperty instance and add its image to the main image container
 const yourMainProperty = new MainProperty(
-    './images/italian-property.jpg', 
+    './Images/italian-property.jpg', 
     'Italian House',
     [{
         name: 'Olive',
