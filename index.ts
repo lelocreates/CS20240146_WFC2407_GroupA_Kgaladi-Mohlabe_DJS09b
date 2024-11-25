@@ -1,16 +1,18 @@
+// Import necessary functions, enums, types, interfaces, and classes from other modules
 import { showReviewTotal, populateUser, showDetails, getTopTwoReviews} from "./utils.ts";
 import { Permissions, LoyaltyUser } from "./enums.ts";
 import { Price, country } from "./types.ts";
 import { Review, Property } from "./interfaces.ts";
 import { MainProperty } from "./classes.ts";
 
-
+// Select DOM elements to manipulate and display content
 const propertyContainer = document.querySelector('.properties')
 const reviewContainer = document.querySelector('.reviews')
 const container = document.querySelector('.container')
 const button = document.querySelector('button')
 const footer = document.querySelector('.footer')
 
+// variable to track the login status of the user
 let isLoggedIn: boolean
 
 
@@ -47,26 +49,7 @@ const reviews : Review[] = /*{
     },
 ]
 
-
-/*const ADMIN = 'admin'
-const READ_ONLY = 'read-only'
-
-
-enum Permissions {
-    ADMIN,
-    READ_ONLY
-}
-
-const you = {
-    firstName: 'Bobby',
-    lastName: 'Brown',
-    permissions: Permissions.ADMIN,
-    isReturning: true,
-    age: 35,
-    stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
-}*/
-
-
+// Define user details including name, permissions, loyalty status, and properties stayed
 const you = {
     firstName: 'Bobby',
     lastName: 'Brown',
@@ -75,7 +58,6 @@ const you = {
     age: 35,
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
-
 
 
 const properties : {
@@ -118,7 +100,7 @@ const properties : {
         isAvailable: false 
     },
     {
-        image: '/images/london-property.jpg',
+        image: './images/london-property.jpg',
         title: 'London Flat',
         price: 25,
         location: {
@@ -131,7 +113,7 @@ const properties : {
         isAvailable: true
     },
     {
-        image: 'images/malaysian-hotel.jpeg',
+        image: './images/malaysian-hotel.jpeg',
         title: 'Malia Hotel',
         price: 35,
         location: {
@@ -145,15 +127,19 @@ const properties : {
     }
 ]
 
+//Function calls 
+// Display the total reviews and the first reviewer's name with loyalty status
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
+// Populate the user information in the UI
 populateUser(you.isReturning, you.userName)
 
 let authorityStatus : any
 
+// Initialize the login status
 isLoggedIn = false
 
 
-//Add the properties
+// Add property cards to the DOM
 for (let i = 0; i < properties.length; i++) {
     const card = document.createElement('div')
     card.classList.add('card')
@@ -165,7 +151,10 @@ for (let i = 0; i < properties.length; i++) {
     propertyContainer.appendChild(card)
 }
 
+// Count variable to ensure reviews are added only once
 let count = 0
+
+// Function to display the top reviews
 function addReviews(array: Review[]) : void {
     if (!count ) {
         count++
@@ -180,22 +169,26 @@ function addReviews(array: Review[]) : void {
     }
 }
 
+// Event listener for the button to trigger the addReviews function
 button.addEventListener('click', () => addReviews(reviews))
 
+// Define the current location details and update the footer
 const currentLocation : [string, string, number] = ["South Africa", "02:08", 17]
 footer.innerHTML = currentLocation[0] + " " + currentLocation[1] + " " + currentLocation[2]
 
 
-
+// Create a new MainProperty instance and add its image to the main image container
 const yourMainProperty = new MainProperty(
-    'images/italian-property.jpg', 
+    './images/italian-property.jpg', 
     'Italian House',
     [{
         name: 'Olive',
         stars: 5,
         loyaltyUser: LoyaltyUser.GOLD_USER,
         date: '12-04-2021'
-    }] )
+    }] 
+)
+
 
 const mainImageContainer = document.querySelector('.main-image')
 const image = document.createElement('img')
