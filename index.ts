@@ -4,6 +4,7 @@ import { Permissions, LoyaltyUser } from "./enums.ts";
 import { Price, country } from "./types.ts";
 import { Review, Property } from "./interfaces.ts";
 import { MainProperty } from "./classes.ts";
+import italian from "./images/italian-property.jpg";
 
 // Select DOM elements to manipulate and display content
 const propertyContainer = document.querySelector('.properties')
@@ -179,7 +180,7 @@ footer.innerHTML = currentLocation[0] + " " + currentLocation[1] + " " + current
 
 // Create a new MainProperty instance and add its image to the main image container
 const yourMainProperty = new MainProperty(
-    '/images/italian-property.jpg', 
+    italian, 
     'Italian House',
     [{
         name: 'Olive',
